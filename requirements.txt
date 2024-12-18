@@ -4,4 +4,4 @@ numpy
 streamlit
 flask_caching
 seaborn 
-matplotlib.pyplot
+matplotlib
