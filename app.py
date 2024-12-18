@@ -61,8 +61,8 @@ if dataset_name:
             st.header("Correlation Heatmap")
             numerical_df = df.select_dtypes(include=['number'])
             if not numerical_df.empty:
-                fig, ax = plt.subplots(figsize=(3, 3))  # Smaller size
-                sns.heatmap(numerical_df.corr(), annot=True, cmap="Purples", ax=ax)
+                fig, ax = plt.subplots(figsize=(1, 1))  # Smaller size
+                sns.heatmap(numerical_df.corr(), annot=False, cmap="Purples", ax=ax)
                 st.pyplot(fig, use_container_width=True)
 
                 # Provide download option
@@ -81,7 +81,7 @@ if dataset_name:
             y_feature = st.selectbox("Select Y-axis feature", df.columns, key="scatter-y")
 
             if x_feature and y_feature:
-                fig, ax = plt.subplots(figsize=(3, 3))  # Smaller size
+                fig, ax = plt.subplots(figsize=(1, 1))  # Smaller size
                 sns.scatterplot(data=df, x=x_feature, y=y_feature, ax=ax)
                 ax.set_title(f"Scatter Plot: {x_feature} vs {y_feature}", color=COLORS['text_color'])
                 st.pyplot(fig, use_container_width=True)
@@ -99,7 +99,7 @@ if dataset_name:
             if 'Label' in df.columns:
                 df['Label'] = df['Label'].replace({1: 'Attack', 0: 'Normal'})
                 counts = df['Label'].value_counts()
-                fig, ax = plt.subplots(figsize=(3, 3))  # Smaller size
+                fig, ax = plt.subplots(figsize=(1, 1))  # Smaller size
                 sns.barplot(x=counts.index, y=counts.values, ax=ax)
                 ax.set_title("Bar Chart", color=COLORS['text_color'])
                 ax.set_xlabel("Label")
@@ -121,7 +121,7 @@ if dataset_name:
             if 'Label' in df.columns:
                 df['Label'] = df['Label'].replace({1: 'Attack', 0: 'Normal'})
                 counts = df['Label'].value_counts()
-                fig, ax = plt.subplots(figsize=(3, 3))  # Smaller size
+                fig, ax = plt.subplots(figsize=(1, 1))  # Smaller size
                 ax.pie(counts.values, labels=counts.index, autopct='%1.1f%%', colors=sns.color_palette("Purples"))
                 ax.set_title("Pie Chart", color=COLORS['text_color'])
                 st.pyplot(fig, use_container_width=True)
@@ -142,7 +142,7 @@ if dataset_name:
             feature_col = st.selectbox("Select a feature", numerical_columns, key="box-plot-feature")
 
             if feature_col:
-                fig, ax = plt.subplots(figsize=(3, 3))  # Smaller size
+                fig, ax = plt.subplots(figsize=(1, 1))  # Smaller size
                 sns.boxplot(y=df[feature_col], ax=ax)
                 ax.set_title(f"Box Plot for {feature_col}", color=COLORS['text_color'])
                 st.pyplot(fig, use_container_width=True)
